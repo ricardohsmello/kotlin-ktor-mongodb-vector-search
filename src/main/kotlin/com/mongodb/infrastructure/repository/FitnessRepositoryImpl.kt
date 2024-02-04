@@ -1,10 +1,12 @@
 package com.mongodb.infrastructure.repository
 
+import com.mongodb.MongoException
 import com.mongodb.client.model.Filters.eq
 import com.mongodb.domain.entity.Fitness
 import com.mongodb.kotlin.client.coroutine.MongoDatabase
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.toList
+import org.bson.BsonValue
 import org.bson.types.ObjectId
 
 
@@ -27,6 +29,21 @@ class FitnessRepositoryImpl(private val mongoDatabase: MongoDatabase) : FitnessR
         mongoDatabase.getCollection<Fitness>(FITNESS_COLLECTION).withDocumentClass<Fitness>()
             .find(eq(Fitness::exerciseType.name, type))
             .toList()
+
+    override suspend fun insertOne(fitness: Fitness): BsonValue? {
+
+        try {
+            val result = mongoDatabase.getCollection<Fitness>(FITNESS_COLLECTION).insertOne(
+                fitness
+            )
+
+            return result.insertedId
+        } catch (e: MongoException) {
+            System.err.println("Unable to insert due to an error: $e")
+        }
+
+        return null
+    }
 
 
 }
