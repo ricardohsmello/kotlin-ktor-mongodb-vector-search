@@ -31,13 +31,22 @@ dependencies {
     implementation("io.ktor:ktor-server-tomcat-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
 
+    //swagger
+    implementation("io.ktor:ktor-server-swagger:$ktor_version")
+    implementation("io.ktor:ktor-server-openapi:$ktor_version")
+    implementation("io.swagger.codegen.v3:swagger-codegen-generators:1.0.46")
+
+
+    // coroutines + mongodb
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.mongodb:mongodb-driver-kotlin-coroutine:4.10.1")
 
+    // koin
     implementation("io.insert-koin:koin-ktor:3.6.0-wasm-alpha2")
     implementation("io.insert-koin:koin-logger-slf4j:3.6.0-wasm-alpha2")
 
 
+    // tests
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 
