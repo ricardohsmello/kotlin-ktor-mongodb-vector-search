@@ -1,8 +1,10 @@
 package com.mongodb.application.routes
 
+import com.mongodb.domain.entity.Fitness
 import com.mongodb.domain.service.FitnessService
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.bson.types.ObjectId
@@ -42,6 +44,9 @@ fun Route.fitnessRouting() {
         }
 
         post {
+            val fitness = call.receive<Fitness>()
+            val insertedId = service.insertOne(fitness)
+            call.respond(HttpStatusCode.Created, "Created fitness with id $insertedId")
 
         }
         delete("{id?") {
