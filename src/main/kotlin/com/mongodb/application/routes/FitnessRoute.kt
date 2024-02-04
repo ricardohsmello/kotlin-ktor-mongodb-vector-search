@@ -21,7 +21,7 @@ fun Route.fitnessRouting() {
             } ?: call.respondText("No records found")
         }
 
-        get("/id/{id?}") {
+        get("/{id?}") {
             val id = call.parameters["id"]
             if (id.isNullOrEmpty()) {
                 return@get call.respondText(
@@ -49,7 +49,19 @@ fun Route.fitnessRouting() {
             call.respond(HttpStatusCode.Created, "Created fitness with id $insertedId")
 
         }
-        delete("{id?") {
+
+        delete("/{id?}") {
+            val id = call.parameters["id"] ?: return@delete call.respondText(
+                text = "Missing fitness id",
+                status = HttpStatusCode.BadRequest
+            )
+
+            val delete: Long = service.deleteById(ObjectId(id))
+
+            if (delete == 1L){
+                return@delete call.respondText("Fitness Deleted successfully", status = HttpStatusCode.OK)
+            }
+            return@delete call.respondText("Fitness not found", status = HttpStatusCode.NotFound)
 
         }
     }

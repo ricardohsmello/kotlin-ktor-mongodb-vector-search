@@ -45,5 +45,18 @@ class FitnessRepositoryImpl(private val mongoDatabase: MongoDatabase) : FitnessR
         return null
     }
 
+    override suspend fun deleteById(objectId: ObjectId): Long {
+
+        try {
+            val result = mongoDatabase.getCollection<Fitness>(FITNESS_COLLECTION).deleteOne(eq("_id", objectId))
+            return result.deletedCount
+        } catch (e: MongoException) {
+            System.err.println("Unable to delete due to an error: $e")
+        }
+
+        return 0
+
+    }
+
 
 }

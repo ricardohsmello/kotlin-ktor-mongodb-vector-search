@@ -14,4 +14,6 @@ interface FitnessRepository {
 
     suspend fun insertOne(fitness: Fitness): BsonValue?
 
+    suspend fun deleteById(objectId: ObjectId): Long
+
  }
