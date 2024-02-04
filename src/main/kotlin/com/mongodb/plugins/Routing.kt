@@ -1,13 +1,15 @@
 package com.mongodb.plugins
 
+import com.mongodb.routes.fitnessRouting
 import io.ktor.server.application.*
-import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Application.configureRouting() {
+
+
     routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
+        fitnessRouting()
     }
+
+
 }
