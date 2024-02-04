@@ -16,4 +16,6 @@ interface FitnessRepository {
 
     suspend fun deleteById(objectId: ObjectId): Long
 
+    suspend fun updateOne(objectId: ObjectId, fitness: Fitness): Long
+
  }

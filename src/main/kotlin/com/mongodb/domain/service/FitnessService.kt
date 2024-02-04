@@ -24,6 +24,10 @@ class FitnessService(private val fitnessRepository: FitnessRepository) {
     suspend fun deleteById(objectId: ObjectId): Long {
         return fitnessRepository.deleteById(objectId)
     }
+    suspend fun updateOne(objectId: ObjectId, fitness: Fitness): Long {
+        return fitnessRepository.updateOne(objectId, fitness)
+    }
+
 
 }
 
