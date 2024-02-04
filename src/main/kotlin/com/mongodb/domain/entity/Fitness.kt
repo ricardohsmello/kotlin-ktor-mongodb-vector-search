@@ -1,4 +1,4 @@
-package com.mongodb
+package com.mongodb.domain.entity
 import org.bson.codecs.pojo.annotations.BsonId
 import org.bson.types.ObjectId
 import java.util.*
