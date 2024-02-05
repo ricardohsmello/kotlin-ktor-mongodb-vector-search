@@ -1,4 +1,4 @@
-package com.mongodb
+package com.mongodb.infrastructure.modules
 
 import com.mongodb.domain.service.FitnessService
 import com.mongodb.infrastructure.repository.FitnessRepository
