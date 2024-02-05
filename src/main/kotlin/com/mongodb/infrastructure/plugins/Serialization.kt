@@ -1,4 +1,4 @@
-package com.mongodb.plugins
+package com.mongodb.infrastructure.plugins
 
 import io.ktor.serialization.gson.*
 import io.ktor.serialization.kotlinx.json.*

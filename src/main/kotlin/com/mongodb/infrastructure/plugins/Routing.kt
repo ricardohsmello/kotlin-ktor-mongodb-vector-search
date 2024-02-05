@@ -1,4 +1,4 @@
-package com.mongodb.plugins
+package com.mongodb.infrastructure.plugins
 
 import com.mongodb.application.routes.fitnessRouting
 import com.mongodb.application.routes.swaggerRouting

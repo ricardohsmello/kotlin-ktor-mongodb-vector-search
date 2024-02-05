@@ -1,5 +1,6 @@
 package com.mongodb
 
+import com.mongodb.infrastructure.plugins.configureRouting
 import com.mongodb.plugins.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
