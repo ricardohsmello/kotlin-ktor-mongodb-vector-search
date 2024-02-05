@@ -71,14 +71,12 @@ fun Route.fitnessRouting() {
                 status = HttpStatusCode.BadRequest
             )
 
-            val fitnessToUpdate = call.receive<Fitness>()
+            val updated = service.updateOne(ObjectId(id), call.receive())
 
-            val updated : Long = service.updateOne(ObjectId(id), fitnessToUpdate)
-
-            if (updated == 1L){
-                return@patch call.respondText("Fitness updated successfully", status = HttpStatusCode.OK)
-            }
-            return@patch call.respondText("Fitness not found", status = HttpStatusCode.NotFound)
+                call.respondText(
+                text = if (updated == 1L) "Fitness updated successfully" else "Fitness not found",
+                status = if (updated == 1L) HttpStatusCode.OK else HttpStatusCode.NotFound
+            )
         }
 
     }

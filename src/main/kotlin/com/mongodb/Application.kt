@@ -1,7 +1,9 @@
 package com.mongodb
 
-import com.mongodb.plugins.configureRouting
-import com.mongodb.plugins.configureSerialization
+import com.mongodb.infrastructure.modules.fitnessModule
+import com.mongodb.infrastructure.modules.mongoModule
+import com.mongodb.infrastructure.plugins.configureRouting
+import com.mongodb.infrastructure.plugins.configureSerialization
 import io.ktor.server.application.*
 import io.ktor.server.tomcat.*
 import org.koin.ktor.plugin.Koin
