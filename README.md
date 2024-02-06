@@ -1,10 +1,10 @@
 # Fitness Tracker App 
 
-## Overview
+# Overview
 
 Welcome to the Fitness Tracker App repository! This application is designed to help users track their fitness activities and progress. Whether you are a beginner or a fitness enthusiast, this app provides a user-friendly interface to log and monitor your workouts.
 
-### Built with
+## Built with
 
 - [Ktor](https://ktor.io/)
 - [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
@@ -36,12 +36,12 @@ Follow the steps below to get the Fitness Tracker App up and running on your loc
      ```
 
 4. Run the application local or in cluster
-  ```bash   
- LOCAL-> java -jar -DMONGO_URI="mongodb://localhost:27017/fitness/" -DMONGO_DATABASE="discover" build/libs
- CLUSTER -> java -jar -DMONGO_URI="mongodb+srv://user:password@cluster0.xpto.cluster.net/" -DMONGO_DATABASE="discover" build/libs
-  ```
+    
+   ```bash
+   java -jar -DMONGO_URI="mongodb://localhost:27017/fitness/" -DMONGO_DATABASE="discover" build/libs
+   ```
 
-### SWAGGER UI
+### Swagger UI
 To explore the API documentation and interact with the Fitness Tracker App, you can use Swagger. Open your web browser and navigate to:
 
    ```
