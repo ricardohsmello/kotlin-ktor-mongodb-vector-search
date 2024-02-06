@@ -4,16 +4,15 @@
 
 Welcome to the Fitness Tracker App repository! This application is designed to help users track their fitness activities and progress. Whether you are a beginner or a fitness enthusiast, this app provides a user-friendly interface to log and monitor your workouts.
 
-## Getting Started
-
-Follow the steps below to get the Fitness Tracker App up and running on your local machine.
-
-
 ### Built with
 
 - [Ktor](https://ktor.io/)
 - [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
 - [mongodb-driver-kotlin-coroutine](https://www.mongodb.com/docs/drivers/kotlin/coroutine/current/)
+
+## Getting Started
+
+Follow the steps below to get the Fitness Tracker App up and running on your local machine.
 
 ### Running
 
