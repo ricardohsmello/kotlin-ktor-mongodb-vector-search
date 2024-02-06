@@ -49,6 +49,6 @@ To explore the API documentation and interact with the Fitness Tracker App, you 
    ``` 
  
 
-![OpenAPI](https://ibb.co/PwJ3vbc)
+![OpenAPI](https://i.ibb.co/kQzksr4/openapi.png)
 
 
