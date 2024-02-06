@@ -42,11 +42,11 @@ Follow the steps below to get the Fitness Tracker App up and running on your loc
    ```
 
 ### Swagger UI
+
 To explore the API documentation and interact with the Fitness Tracker App, you can use Swagger. Open your web browser and navigate to:
 
-   ```
-   http://localhost:8080/openapi/
-   ``` 
+ http://localhost:8080/openapi/
+ 
  
 
 ![OpenAPI](https://i.ibb.co/kQzksr4/openapi.png)
