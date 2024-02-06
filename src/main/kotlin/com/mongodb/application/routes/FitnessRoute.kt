@@ -1,7 +1,9 @@
 package com.mongodb.application.routes
 
+import com.mongodb.application.request.FitnessRequest
+import com.mongodb.application.request.toDomain
 import com.mongodb.domain.entity.Fitness
-import com.mongodb.domain.service.FitnessService
+import com.mongodb.domain.ports.FitnessRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
@@ -10,14 +12,17 @@ import io.ktor.server.routing.*
 import org.bson.types.ObjectId
 import org.koin.ktor.ext.inject
 
-fun Route.fitnessRouting() {
-    val service by inject<FitnessService>()
+
+fun Route.fitnessRoutes() {
+
+    val repository by inject<FitnessRepository>()
 
     route("/fitness") {
 
+
         get {
-            service.findAll()?.let {
-                call.respond(it)
+            repository.findAll()?.let {
+                call.respond(it[0].id.toString())
             } ?: call.respondText("No records found")
         }
 
@@ -30,22 +35,21 @@ fun Route.fitnessRouting() {
                 )
             }
 
-            service.findById(ObjectId(id))?.let {
+            repository.findById(ObjectId(id))?.let {
                 call.respond(it)
             } ?: call.respondText("No records found for id $id")
-
         }
 
         get("/exerciseType/{type?}") {
             val type = call.parameters["type"]
             type?.takeIf { it.isNotEmpty() }?.let {
-                call.respond(service.findByExerciseType(it).ifEmpty { "No records found for exerciseType $it" })
+                call.respond(repository.findByExerciseType(it).ifEmpty { "No records found for exerciseType $it" })
             } ?: call.respond(HttpStatusCode.BadRequest, "Missing exercise type param")
         }
 
         post {
-            val fitness = call.receive<Fitness>()
-            val insertedId = service.insertOne(fitness)
+            val fitness = call.receive<FitnessRequest>()
+            val insertedId = repository.insertOne(fitness.toDomain())
             call.respond(HttpStatusCode.Created, "Created fitness with id $insertedId")
 
         }
@@ -56,9 +60,9 @@ fun Route.fitnessRouting() {
                 status = HttpStatusCode.BadRequest
             )
 
-            val delete: Long = service.deleteById(ObjectId(id))
+            val delete: Long = repository.deleteById(ObjectId(id))
 
-            if (delete == 1L){
+            if (delete == 1L) {
                 return@delete call.respondText("Fitness Deleted successfully", status = HttpStatusCode.OK)
             }
             return@delete call.respondText("Fitness not found", status = HttpStatusCode.NotFound)
@@ -71,9 +75,9 @@ fun Route.fitnessRouting() {
                 status = HttpStatusCode.BadRequest
             )
 
-            val updated = service.updateOne(ObjectId(id), call.receive())
+            val updated = repository.updateOne(ObjectId(id), call.receive())
 
-                call.respondText(
+            call.respondText(
                 text = if (updated == 1L) "Fitness updated successfully" else "Fitness not found",
                 status = if (updated == 1L) HttpStatusCode.OK else HttpStatusCode.NotFound
             )
@@ -81,6 +85,3 @@ fun Route.fitnessRouting() {
 
     }
 }
-
-
-

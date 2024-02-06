@@ -8,9 +8,9 @@ data class Fitness(
     val id: ObjectId,
     val exerciseType: String,
     val startTime: Date,
-    val endTime: Date,
-    val notes: String,
-    val details: FitnessDetails
+    val endTime: Date?,
+    val notes: String?,
+    val details: FitnessDetails?
 )
 
 data class FitnessDetails(

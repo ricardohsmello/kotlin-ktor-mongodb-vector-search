@@ -1,11 +1,17 @@
 package com.mongodb
 
-import com.mongodb.infrastructure.modules.fitnessModule
-import com.mongodb.infrastructure.modules.mongoModule
-import com.mongodb.infrastructure.plugins.configureRouting
-import com.mongodb.infrastructure.plugins.configureSerialization
+import com.mongodb.application.routes.fitnessRoutes
+import com.mongodb.application.routes.swaggerRoute
+import com.mongodb.domain.ports.FitnessRepository
+import com.mongodb.infrastructure.FitnessRepositoryImpl
+import com.mongodb.kotlin.client.coroutine.MongoClient
+import io.ktor.serialization.gson.*
+import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
+import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.routing.*
 import io.ktor.server.tomcat.*
+import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 
@@ -13,12 +19,29 @@ fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 fun Application.module() {
 
-    install(Koin) {
-        slf4jLogger()
-        modules(mongoModule, fitnessModule)
+    install(ContentNegotiation) {
+        gson {
+        }
+        json()
     }
 
-    configureSerialization()
-    configureRouting()
+    install(Koin) {
+        slf4jLogger()
+        modules(module {
+            val mongoUri =
+                environment.config.propertyOrNull("ktor.mongo.uri")?.getString() ?: throw RuntimeException("Failed")
+            val databaseName = environment.config.property("ktor.mongo.database").getString()
+
+            single { MongoClient.create(mongoUri) }
+            single { get<MongoClient>().getDatabase(databaseName) }
+        }, module {
+            single<FitnessRepository> { FitnessRepositoryImpl(get()) }
+        })
+    }
+
+    routing {
+        swaggerRoute()
+        fitnessRoutes()
+    }
 }
 
