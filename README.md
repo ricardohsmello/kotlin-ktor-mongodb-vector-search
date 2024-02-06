@@ -35,11 +35,18 @@ Follow the steps below to get the Fitness Tracker App up and running on your loc
    ./gradlew shadowJar
      ```
 
-4. Run the application passing those params
+4. Run the application local or in cluster
+  ```bash   
+ LOCAL-> java -jar -DMONGO_URI="mongodb://localhost:27017/fitness/" -DMONGO_DATABASE="discover" build/libs
+ CLUSTER -> java -jar -DMONGO_URI="mongodb+srv://user:password@cluster0.xpto.cluster.net/" -DMONGO_DATABASE="discover" build/libs
+  ```
 
-   ```bash
-   java -jar -DMONGO_URI="mongodb://localhost:27017/fitness" -DMONGO_DATABASE="discover" build/libs
-     ```
+      
+       
+     
+        
+  
+    
 
 ### SWAGGER UI
 To explore the API documentation and interact with the Fitness Tracker App, you can use Swagger. Open your web browser and navigate to:
