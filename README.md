@@ -20,7 +20,7 @@ Follow the steps below to get the Fitness Tracker App up and running on your loc
 
     ```bash
     git clone https://github.com/your-username/fitness-tracker-app.git
-    cd fitness-tracker-app
+    cd fitness-tracker
     ```
 
 2. Start the application using Docker Compose:
