@@ -3,6 +3,7 @@ import com.mongodb.application.response.FitnessResponse
 import org.bson.codecs.pojo.annotations.BsonId
 import org.bson.types.ObjectId
 import java.util.*
+
 data class Fitness(
     @BsonId
     val id: ObjectId,
@@ -21,6 +22,7 @@ data class Fitness(
             details = details
         )
     }
+
 data class FitnessDetails(
     val durationMinutes: Int,
     val distance: Double,

@@ -10,13 +10,12 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.bson.types.ObjectId
 import org.koin.ktor.ext.inject
+
 fun Route.fitnessRoutes() {
 
     val repository by inject<FitnessRepository>()
 
     route("/fitness") {
-
-
         get {
             repository.findAll()?.let { list ->
                 call.respond(list.map { it.toResponse() })
@@ -79,6 +78,5 @@ fun Route.fitnessRoutes() {
                 status = if (updated == 1L) HttpStatusCode.OK else HttpStatusCode.NotFound
             )
         }
-
     }
 }
