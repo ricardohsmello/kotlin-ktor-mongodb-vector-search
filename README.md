@@ -1,5 +1,4 @@
 # kotlin-coroutine-ktor-mongodb
-# Overview
 
 Welcome to the Fitness Tracker App repository! This application is designed to help users track their fitness activities and progress.
 
