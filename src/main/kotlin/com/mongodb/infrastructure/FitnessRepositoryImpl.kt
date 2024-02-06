@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.toList
 import org.bson.BsonValue
 import org.bson.types.ObjectId
-
 class FitnessRepositoryImpl(
     private val mongoDatabase: MongoDatabase
 ) : FitnessRepository {

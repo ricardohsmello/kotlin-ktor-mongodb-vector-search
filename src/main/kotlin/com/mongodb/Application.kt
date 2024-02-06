@@ -14,9 +14,7 @@ import io.ktor.server.tomcat.*
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
-
 fun main(args: Array<String>): Unit = EngineMain.main(args)
-
 fun Application.module() {
 
     install(ContentNegotiation) {

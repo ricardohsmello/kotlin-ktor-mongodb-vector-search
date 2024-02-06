@@ -4,7 +4,6 @@ import com.mongodb.domain.entity.Fitness
 import com.mongodb.domain.entity.FitnessDetails
 import org.bson.types.ObjectId
 import java.util.*
-
 data class FitnessRequest(
     val exerciseType: String,
     val startTime: Date?,

@@ -2,7 +2,6 @@ package com.mongodb.application.routes
 
 import com.mongodb.application.request.FitnessRequest
 import com.mongodb.application.request.toDomain
-import com.mongodb.domain.entity.Fitness
 import com.mongodb.domain.ports.FitnessRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -11,8 +10,6 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.bson.types.ObjectId
 import org.koin.ktor.ext.inject
-
-
 fun Route.fitnessRoutes() {
 
     val repository by inject<FitnessRepository>()
@@ -21,8 +18,8 @@ fun Route.fitnessRoutes() {
 
 
         get {
-            repository.findAll()?.let {
-                call.respond(it[0].id.toString())
+            repository.findAll()?.let { list ->
+                call.respond(list.map { it.toResponse() })
             } ?: call.respondText("No records found")
         }
 
@@ -36,7 +33,7 @@ fun Route.fitnessRoutes() {
             }
 
             repository.findById(ObjectId(id))?.let {
-                call.respond(it)
+                call.respond(it.toResponse())
             } ?: call.respondText("No records found for id $id")
         }
 
