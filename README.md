@@ -1,7 +1,9 @@
 # kotlin-coroutine-ktor-mongodb
 # Overview
 
-Welcome to the Fitness Tracker App repository! This application is designed to help users track their fitness activities and progress. Whether you are a beginner or a fitness enthusiast, this app provides a user-friendly interface to log and monitor your workouts.
+Welcome to the Fitness Tracker App repository! This application is designed to help users track their fitness activities and progress.
+
+The main objective of this project is to leverage coroutine capabilities with Kotlin, the Kotlin coroutine MongoDB driver, and the Ktor framework while integrating Koin for dependency injection. This aims to demonstrate best practices and efficient utilization of these technologies within a real-world fitness tracking application.
 
 ## Built with
 
