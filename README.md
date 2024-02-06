@@ -7,9 +7,10 @@ The main objective of this project is to leverage coroutine capabilities with Ko
 
 ## Built with
 
-- [Ktor](https://ktor.io/)
-- [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
-- [mongodb-driver-kotlin-coroutine](https://www.mongodb.com/docs/drivers/kotlin/coroutine/current/)
+- [Kotlin - Programming Language](https://kotlinlang.org/docs/coroutines-overview.html)
+- [Ktor - Asynchronous framework](https://ktor.io/)
+- [Koin - Dependency Injection framework](https://insert-koin.io/)
+- [MongoDB Kotlin Driver — Kotlin Coroutine](https://www.mongodb.com/docs/drivers/kotlin/coroutine/current/)
 
 ## Getting Started
 
