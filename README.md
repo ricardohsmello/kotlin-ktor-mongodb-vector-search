@@ -41,3 +41,14 @@ Follow the steps below to get the Fitness Tracker App up and running on your loc
    java -jar -DMONGO_URI="mongodb://localhost:27017/fitness" -DMONGO_DATABASE="discover" build/libs
      ```
 
+### SWAGGER UI
+To explore the API documentation and interact with the Fitness Tracker App, you can use Swagger. Open your web browser and navigate to:
+
+   ```
+   http://localhost:8080/openapi/
+   ``` 
+ 
+
+![OpenAPI](https://ibb.co/PwJ3vbc)
+
+
