@@ -24,7 +24,6 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-server-core-jvm")
