@@ -37,7 +37,7 @@ dependencies {
     implementation("io.ktor:ktor-server-swagger:$ktor_version")
 
     // coroutines + mongodb
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+
     implementation("org.mongodb:mongodb-driver-kotlin-coroutine:4.10.1")
 
     // koin
