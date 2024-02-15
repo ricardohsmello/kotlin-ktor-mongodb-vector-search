@@ -20,8 +20,7 @@ fun Application.module() {
     install(ContentNegotiation) {
         gson {
         }
-        json()
-    }
+     }
 
     install(Koin) {
         slf4jLogger()
