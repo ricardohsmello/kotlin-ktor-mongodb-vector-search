@@ -11,11 +11,11 @@ Together, we'll demonstrate and set up the Ktor project, implement CRUD operatio
 - [Koin - Dependency Injection framework](https://insert-koin.io/)
 - [MongoDB Kotlin Driver — Kotlin Coroutine](https://www.mongodb.com/docs/drivers/kotlin/coroutine/current/)
 
-## Getting Started
+## Running
 
-Follow the steps below to get the Fitness Tracker App up and running on your local machine.
+Follow the steps below to get the Fitness Tracker App up and running local / MongoDB Atlas.
 
-### Running
+### Local
 
 1. Clone the repository to your local machine:
 
@@ -36,20 +36,40 @@ Follow the steps below to get the Fitness Tracker App up and running on your loc
    ./gradlew shadowJar
      ```
 
-4. Run the application local or in cluster
+4. Run the application
     
    ```bash
-   java -jar -DMONGO_URI="mongodb://localhost:27017/fitness/" -DMONGO_DATABASE="discover" build/libs
+   java -jar -DMONGO_URI="mongodb://localhost:27017/fitness/" -DMONGO_DATABASE="my_database" build/libs
    ```
 
+### MongoDB Atlas
+
+1. Clone the repository to your local machine:
+
+    ```bash
+    git clone https://github.com/your-username/fitness-tracker-app.git
+    cd fitness-tracker
+    ```
+
+2. Compile the application jar using Gradle:
+
+   ```bash
+   ./gradlew shadowJar
+     ```
+
+4. Run the application
+    
+   ```bash
+    java -jar -DMONGO_URI="mongodb+srv://<username>:<password>@<cluster>/?retryWrites=true&w=majority" -DMONGO_DATABASE="my_database" build/libs
+   
+   ```
 ### Swagger UI
 
 To explore the API documentation and interact with the Fitness Tracker App, you can use Swagger. Open your web browser and navigate to:
 
- http://localhost:8080/openapi/
- 
- 
+ http://localhost:8080/swagger-ui/
+  
 
-![OpenAPI](https://i.ibb.co/kQzksr4/openapi.png)
+![OpenAPI](https://i.ibb.co/r0vm3FL/swagger-git.png)
 
 
