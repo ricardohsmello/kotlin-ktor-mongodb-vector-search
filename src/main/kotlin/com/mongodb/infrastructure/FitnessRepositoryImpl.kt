@@ -66,8 +66,6 @@ class FitnessRepositoryImpl(
             val query = Filters.eq("_id", objectId)
             val updates = Updates.combine(
                 Updates.set(Fitness::exerciseType.name, fitness.exerciseType),
-                Updates.set(Fitness::startTime.name, fitness.startTime),
-                Updates.set(Fitness::endTime.name, fitness.endTime),
                 Updates.set(Fitness::notes.name, fitness.notes),
                 Updates.set(Fitness::details.name, fitness.details)
             )

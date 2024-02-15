@@ -23,22 +23,20 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-server-core-jvm")
+    implementation("io.ktor:ktor-server-swagger-jvm")
+    implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-serialization-gson-jvm")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
     implementation("io.ktor:ktor-server-tomcat-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
+    implementation("io.ktor:ktor-server-config-yaml:2.3.8")
 
-    //swagger
-    implementation("io.ktor:ktor-server-swagger:$ktor_version")
-
-    // coroutines + mongodb
+    //MongoDB
     implementation("org.mongodb:mongodb-driver-kotlin-coroutine:4.10.1")
 
-    // koin
-    implementation("io.insert-koin:koin-ktor:3.6.0-wasm-alpha2")
-    implementation("io.insert-koin:koin-logger-slf4j:3.6.0-wasm-alpha2")
+    //Koin
+    implementation("io.insert-koin:koin-ktor:3.5.3")
+    implementation("io.insert-koin:koin-logger-slf4j:3.5.3")
 
     // tests
     testImplementation("io.ktor:ktor-server-tests-jvm")
