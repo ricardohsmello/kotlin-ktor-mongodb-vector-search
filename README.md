@@ -1,6 +1,6 @@
 # kotlin-coroutine-ktor-mongodb
 
-You can read more on my <b>MongoDB</b> article.
+This is the source code about my <b>MongoDB</b> article.
 
 - [`Mastering Kotlin: Creating an API With Ktor and MongoDB Atlas`](https://www.mongodb.com/developer/languages/kotlin/mastering-kotlin-creating-api-ktor-mongodb-atlas/)
 
