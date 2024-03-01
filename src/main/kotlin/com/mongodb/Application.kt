@@ -1,7 +1,10 @@
-package com.mongodb
+package com.mongodbja
 
+import com.mongodb.application.routes.exercisesRoutes
 import com.mongodb.application.routes.fitnessRoutes
+import com.mongodb.domain.ports.ExercisesRepository
 import com.mongodb.domain.ports.FitnessRepository
+import com.mongodb.infrastructure.ExercisesRepositoryImpl
 import com.mongodb.infrastructure.FitnessRepositoryImpl
 import com.mongodb.kotlin.client.coroutine.MongoClient
 import io.ktor.serialization.gson.*
@@ -33,6 +36,7 @@ fun Application.module() {
             single { get<MongoClient>().getDatabase(databaseName) }
         }, module {
             single<FitnessRepository> { FitnessRepositoryImpl(get()) }
+            single<ExercisesRepository> { ExercisesRepositoryImpl(get()) }
         })
     }
 
@@ -41,6 +45,7 @@ fun Application.module() {
             version = "4.15.5"
         }
         fitnessRoutes()
+        exercisesRoutes()
     }
 }
 
