@@ -1,4 +1,4 @@
-package com.mongodbja
+package com.mongodb
 
 import com.mongodb.application.routes.exercisesRoutes
 import com.mongodb.application.routes.fitnessRoutes
