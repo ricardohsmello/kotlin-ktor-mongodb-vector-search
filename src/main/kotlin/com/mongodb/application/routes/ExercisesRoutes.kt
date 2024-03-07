@@ -42,7 +42,6 @@ suspend fun requestSentenceTransform(input: String): HttpResponse {
                 val content = TextContent(input, ContentType.Text.Plain)
                 setBody(content)
             }
-
         response
     }
 }
