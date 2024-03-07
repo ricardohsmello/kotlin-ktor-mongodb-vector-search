@@ -16,7 +16,6 @@ import io.ktor.server.routing.*
 import org.koin.ktor.ext.inject
 
 fun Route.exercisesRoutes() {
-
     val repository by inject<ExercisesRepository>()
 
     route("/exercises/processRequest") {
