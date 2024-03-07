@@ -35,12 +35,8 @@ fun Route.exercisesRoutes() {
     }
 }
 
-
-
-
 suspend fun requestSentenceTransform(input: String): HttpResponse {
     return HttpClient(CIO).use { client ->
-
         val response =
             client.post("https://api-inference.huggingface.co/pipeline/feature-extraction/sentence-transformers/all-MiniLM-L6-v2") {
                 val content = TextContent(input, ContentType.Text.Plain)
