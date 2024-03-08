@@ -44,11 +44,15 @@ fun Route.fitnessRoutes() {
         }
 
         post {
-            val fitness = call.receive<FitnessRequest>()
-            val insertedId = repository.insertOne(fitness.toDomain())
-            call.respond(HttpStatusCode.Created, "Created fitness with id $insertedId")
-
+            val fitness = call.receive<String>()
+            println(fitness)
         }
+//        post {
+//            val fitness = call.receive<FitnessRequest>()
+//            val insertedId = repository.insertOne(fitness.toDomain())
+//            call.respond(HttpStatusCode.Created, "Created fitness with id $insertedId")
+//
+//        }
 
         delete("/{id?}") {
             val id = call.parameters["id"] ?: return@delete call.respondText(
@@ -80,3 +84,6 @@ fun Route.fitnessRoutes() {
         }
     }
 }
+
+
+

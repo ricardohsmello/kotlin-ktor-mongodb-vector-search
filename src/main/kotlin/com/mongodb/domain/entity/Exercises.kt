@@ -9,19 +9,19 @@ data class Exercises(
     val id: ObjectId,
     val exerciseNumber: Int,
     val title: String,
-    val desc: String,
+    val description: String,
     val type: String,
     val bodyPart: String,
     val equipment: String,
     val level: String,
-    val rating: String,
+    val rating: Double,
     val ratingDesc: String,
-    val titleEmbedding: List<Double>
+    val descEmbedding: List<Double>
 ){
     fun toResponse() = ExercisesResponse(
         exerciseNumber = exerciseNumber,
         title = title,
-        desc = desc,
+        description = description,
         bodyPart = bodyPart,
         type = type
     )
