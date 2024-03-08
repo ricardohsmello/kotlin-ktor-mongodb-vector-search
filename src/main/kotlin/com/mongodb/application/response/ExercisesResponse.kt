@@ -3,6 +3,6 @@ data class ExercisesResponse(
     val exerciseNumber: Int,
     val bodyPart: String,
     val type: String,
-    val desc: String,
+    val description: String,
     val title: String
 )
