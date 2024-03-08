@@ -1,7 +1,10 @@
 package com.mongodb
 
+import com.mongodb.application.routes.exercisesRoutes
 import com.mongodb.application.routes.fitnessRoutes
+import com.mongodb.domain.ports.ExercisesRepository
 import com.mongodb.domain.ports.FitnessRepository
+import com.mongodb.infrastructure.ExercisesRepositoryImpl
 import com.mongodb.infrastructure.FitnessRepositoryImpl
 import com.mongodb.kotlin.client.coroutine.MongoClient
 import io.ktor.serialization.gson.*
@@ -25,14 +28,11 @@ fun Application.module() {
     install(Koin) {
         slf4jLogger()
         modules(module {
-            val mongoUri =
-                environment.config.propertyOrNull("ktor.mongo.uri")?.getString() ?: throw RuntimeException("Failed to access MongoDB URI.")
-            val databaseName = environment.config.property("ktor.mongo.database").getString()
-
-            single { MongoClient.create(mongoUri) }
-            single { get<MongoClient>().getDatabase(databaseName) }
+            single { MongoClient.create(environment.config.propertyOrNull("ktor.mongo.uri")?.getString() ?: throw RuntimeException("Failed to access MongoDB URI.")) }
+            single { get<MongoClient>().getDatabase(environment.config.property("ktor.mongo.database").getString()) }
         }, module {
             single<FitnessRepository> { FitnessRepositoryImpl(get()) }
+            single<ExercisesRepository> { ExercisesRepositoryImpl(get()) }
         })
     }
 
@@ -41,6 +41,14 @@ fun Application.module() {
             version = "4.15.5"
         }
         fitnessRoutes()
+        exercisesRoutes()
     }
 }
+
+fun ApplicationCall.huggingFaceApiUrl(): String {
+    return application.environment.config.propertyOrNull("ktor.huggingface.api.url")?.getString()
+        ?: throw RuntimeException("Failed to access Hugging Face API base URL.")
+
+}
+
 
