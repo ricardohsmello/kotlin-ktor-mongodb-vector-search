@@ -14,17 +14,17 @@ class ExercisesRepositoryImpl(
         const val EXERCISES_COLLECTION = "exercises"
     }
 
-   override suspend fun findSimilarDocuments(embedding: List<Double>): List<Exercises> {
+   override suspend fun findSimilarExercises(embedding: List<Double>): List<Exercises> {
         val result =
             mongoDatabase.getCollection<Exercises>(EXERCISES_COLLECTION).withDocumentClass<Exercises>().aggregate(
                 listOf(
                     Document(
                         "\$vectorSearch",
                         Document("queryVector", embedding)
-                            .append("path", "titleEmbedding")
-                            .append("numCandidates", 5L)
+                            .append("path", "descEmbedding")
+                            .append("numCandidates", 3L)
                             .append("index", "vector_index")
-                            .append("limit", 5L)
+                            .append("limit", 3L)
                     )
                 )
             )

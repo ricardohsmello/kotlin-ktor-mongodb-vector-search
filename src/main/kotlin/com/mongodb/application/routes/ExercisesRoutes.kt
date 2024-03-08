@@ -2,6 +2,7 @@ package com.mongodb.application.routes
 
 import com.mongodb.application.request.SentenceRequest
 import com.mongodb.domain.ports.ExercisesRepository
+import com.mongodb.huggingFaceApiUrl
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
@@ -22,11 +23,11 @@ fun Route.exercisesRoutes() {
         post {
             val sentence = call.receive<SentenceRequest>()
 
-            val response = requestSentenceTransform(sentence.input)
+            val response = requestSentenceTransform(sentence.input, call.huggingFaceApiUrl())
 
             if (response.status.isSuccess()) {
                 val embedding = sentence.convertResponse(response.body())
-                val similarDocuments = repository.findSimilarDocuments(embedding)
+                val similarDocuments = repository.findSimilarExercises(embedding)
 
                 call.respond(HttpStatusCode.Accepted, similarDocuments.map { it.toResponse() })
             }
@@ -34,13 +35,17 @@ fun Route.exercisesRoutes() {
     }
 }
 
-suspend fun requestSentenceTransform(input: String): HttpResponse {
+suspend fun requestSentenceTransform(input: String, huggingFaceURL: String): HttpResponse {
+
+    println(huggingFaceURL)
+
     return HttpClient(CIO).use { client ->
-        val response =
-            client.post("https://api-inference.huggingface.co/pipeline/feature-extraction/sentence-transformers/all-MiniLM-L6-v2") {
-                val content = TextContent(input, ContentType.Text.Plain)
-                setBody(content)
-            }
+
+        val response = client.post(huggingFaceURL) {
+            val content = TextContent(input, ContentType.Text.Plain)
+            setBody(content)
+        }
+
         response
     }
 }

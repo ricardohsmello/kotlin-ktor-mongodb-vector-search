@@ -28,12 +28,8 @@ fun Application.module() {
     install(Koin) {
         slf4jLogger()
         modules(module {
-            val mongoUri =
-                environment.config.propertyOrNull("ktor.mongo.uri")?.getString() ?: throw RuntimeException("Failed to access MongoDB URI.")
-            val databaseName = environment.config.property("ktor.mongo.database").getString()
-
-            single { MongoClient.create(mongoUri) }
-            single { get<MongoClient>().getDatabase(databaseName) }
+            single { MongoClient.create(environment.config.propertyOrNull("ktor.mongo.uri")?.getString() ?: throw RuntimeException("Failed to access MongoDB URI.")) }
+            single { get<MongoClient>().getDatabase(environment.config.property("ktor.mongo.database").getString()) }
         }, module {
             single<FitnessRepository> { FitnessRepositoryImpl(get()) }
             single<ExercisesRepository> { ExercisesRepositoryImpl(get()) }
@@ -48,4 +44,11 @@ fun Application.module() {
         exercisesRoutes()
     }
 }
+
+fun ApplicationCall.huggingFaceApiUrl(): String {
+    return application.environment.config.propertyOrNull("ktor.huggingface.api.url")?.getString()
+        ?: throw RuntimeException("Failed to access Hugging Face API base URL.")
+
+}
+
 
