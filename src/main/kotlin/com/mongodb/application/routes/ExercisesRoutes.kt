@@ -34,11 +34,7 @@ fun Route.exercisesRoutes() {
         }
     }
 }
-
 suspend fun requestSentenceTransform(input: String, huggingFaceURL: String): HttpResponse {
-
-    println(huggingFaceURL)
-
     return HttpClient(CIO).use { client ->
 
         val response = client.post(huggingFaceURL) {
