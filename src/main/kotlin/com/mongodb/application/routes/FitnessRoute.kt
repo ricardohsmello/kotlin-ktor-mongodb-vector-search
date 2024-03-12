@@ -1,7 +1,5 @@
 package com.mongodb.application.routes
 
-import com.mongodb.application.request.FitnessRequest
-import com.mongodb.application.request.toDomain
 import com.mongodb.domain.ports.FitnessRepository
 import io.ktor.http.*
 import io.ktor.server.application.*

@@ -34,7 +34,6 @@ fun Route.exercisesRoutes() {
         }
     }
 }
-
 suspend fun requestSentenceTransform(input: String, huggingFaceURL: String): HttpResponse {
     return HttpClient(CIO).use { client ->
 
