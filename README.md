@@ -1,4 +1,4 @@
-# kotlin-coroutine-ktor-mongodb
+# kotlin-ktor-mongodb-vector-search
 
 This is the source code about my <b>MongoDB</b> article.
 
