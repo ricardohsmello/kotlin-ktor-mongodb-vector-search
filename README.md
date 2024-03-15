@@ -3,12 +3,15 @@
 This is the source code about my <b>MongoDB</b> article.
 - [`Mastering Kotlin: Creating an API With Ktor and MongoDB Atlas`](https://www.mongodb.com/developer/languages/kotlin/mastering-kotlin-creating-api-ktor-mongodb-atlas/)
 
-![Generating Embedded](https://i.ibb.co/SQGKK25/first-flow.png)
-
 
 Kotlin's simplicity, Java interoperability, and Ktor's user-friendly framework combined with MongoDB Atlas' flexible cloud database provide a robust stack for modern software development.
 Together, we'll demonstrate and set up the Ktor project, implement CRUD operations, define API route endpoints, and run the application. By the end, you'll have a solid understanding of Kotlin's capabilities in API development and the tools needed to succeed in modern software development.
 
+## MongoDB Atlas Flow
+![Generating Embedded Flow](https://i.ibb.co/SQGKK25/first-flow.png)
+
+## Kotlin Ktor Flow
+![Application Flow](https://i.ibb.co/JHSFdZc/second-flow.png)
 
 ## Built with
 
