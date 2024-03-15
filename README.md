@@ -2,6 +2,10 @@
 
 This is the source code about my <b>MongoDB</b> article.
 
+
+
+![Generating Embedded](https://i.ibb.co/SQGKK25/first-flow.png)
+
 - [`Mastering Kotlin: Creating an API With Ktor and MongoDB Atlas`](https://www.mongodb.com/developer/languages/kotlin/mastering-kotlin-creating-api-ktor-mongodb-atlas/)
 
 
