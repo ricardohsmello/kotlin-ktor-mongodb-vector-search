@@ -1,7 +1,9 @@
 # kotlin-ktor-mongodb-vector-search
 
-This is the source code about my <b>MongoDB</b> article.
+This is the source code about my <b>MongoDB</b> articles.
 - [`Mastering Kotlin: Creating an API With Ktor and MongoDB Atlas`](https://www.mongodb.com/developer/languages/kotlin/mastering-kotlin-creating-api-ktor-mongodb-atlas/)
+- [`Beyond Basics: Enhancing Kotlin Ktor API With Vector Search`](https://www.mongodb.com/developer/products/atlas/beyond-basics-enhancing-kotlin-ktor-api-vector-search/)
+
 
 
 Kotlin's simplicity, Java interoperability, and Ktor's user-friendly framework combined with MongoDB Atlas' flexible cloud database provide a robust stack for modern software development.
